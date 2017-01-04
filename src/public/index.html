@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Loading...</title>
+    <!--样式处理[公共]-->
+    <link href="common/styles/kendo.common.min.css" rel="stylesheet">
+    <link href="common/styles/kendo.rtl.min.css" rel="stylesheet">
+    <link href="common/styles/kendo.default.min.css" rel="stylesheet">
+    <link href="common/styles/kendo.dataviz.min.css" rel="stylesheet">
+    <link href="common/styles/kendo.dataviz.default.min.css" rel="stylesheet">
+    <link href="common/styles/kendo.mobile.all.min.css" rel="stylesheet" />
+
+    <!--App样式处理-->
+    <!--<link rel="stylesheet/less" type="text/css" href="styles/ui.less" />-->
+    <link rel="stylesheet"  href="styles/ui.css" />
+
+    <!--公共JS[内置]-->
+    <script src="common/js/jquery.min.js"></script>
+    <script src="common/js/angular.min.js"></script>
+    <script src="common/js/kendo.all.min.js"></script>
+    <script src="common/js/console.js"></script>
+    <script src="common/js/jquery.json-2.4.js"></script>
+    <script src="common/js/kinetic-v5.1.0.min.js"></script>
+    <!--<script src="common/js/less-1.7.5.min.js"></script>-->
+    <script src="common/js/engine.io.js"></script>
+
+    <!--App引用JS-->
+    <script src="js/util.js"></script>
+    <script src="js/bs.js"></script>
+    <script src="js/ui/ui_common.js"></script>
+    <script src="js/ui/ui_plugins_def.js"></script>
+    <script src="js/ui/ui_plugins_data.js"></script>
+    <script src="js/ui/ui.js"></script>
+
+
+</head>
+<body>
+<div class="k-content-frame">
+    <div id="toolbar" class="controlBar"></div>
+    <div class="middle">
+        <div id="mainGrid"></div>
+        <div id="drawer-canvas">
+        </div>
+    </div>
+    <div class="footer">
+        <span class="resolution_current">Current: <label id="currentResolution">1280 x 800</label></span>
+        <span class="resolution_default">Default: <label id="defaultResolution">1280 x 800</label></span>
+    </div>
+</div>
+
+
+<script type="text/x-kendo-template" id="plugin-viewTemplate">
+    <tr data-uid="#= uid #">
+        <td>
+            <div class="item-plugin" data-rtyid="${id}" ondblclick="UI.c$.actions.onChangeResolutionClick(this)">
+                <p class="item-name">${name} &nbsp;&nbsp;&nbsp;&nbsp; ${UI.c$.getResolutionRatio(name)}</p>
+                # if (quantity < 1 && inAppStore && enable) { #
+                <img class="item-image" src="${url}" data-rtyid="${id}" onclick="UI.c$.actions.onChangeResolutionClick(this)"/>
+                # } #
+            </div>
+        </td>
+    </tr>
+
+</script>
+
+
+
+<script src="common/js/retina.min.js"></script>
+<script>
+    window.UI.c$.launch();
+</script>
+</body>
+</html>
